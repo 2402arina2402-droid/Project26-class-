@@ -86,3 +86,58 @@ void Array::showMax() {
 
     cout << "Max: " << max << endl;
 }
+
+int& Array::operator[](int index) {
+    return arr[index];
+}
+
+void Array::operator()(int value) {
+    for (int i = 0; i < size; i++) {
+        arr[i] = arr[i] + value;
+    }
+}
+
+Array::operator int() {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum = sum + arr[i];
+    }
+    return sum;
+}
+
+Array::operator char* () {
+    static char buffer[1000];
+
+    int pos = 0;
+
+    for (int i = 0; i < size; i++) {
+
+        int num = arr[i];
+
+        if (num == 0) {
+            buffer[pos++] = '0';
+            buffer[pos++] = ' ';
+            continue;
+        }
+        if (num < 0) {
+            buffer[pos++] = '-';
+            num = -num;
+        }
+        int div = 1;
+        while (num / div >= 10) {
+            div = div * 10;
+        }
+        while (div > 0) {
+            int digit = num / div;
+            buffer[pos++] = digit + '0';
+            num = num % div;
+            div = div / 10;
+        }
+
+        buffer[pos++] = ' ';
+    }
+
+    buffer[pos] = '\0';
+
+    return buffer;
+}

@@ -38,4 +38,19 @@ int main() {
 
     cout << "Max of a2: ";
     a2.showMax();
+
+
+    cout << "a1[0] = " << a1[0] << endl;
+    a1[0] = 999;
+    cout << "After a1[0] = 999: ";
+    a1.show();
+
+    cout << "Add 10 to all elements: a1(10)" << endl;
+    a1(10);
+    a1.show();
+
+    int sum = a1;
+    cout << "Sum of a1: " << sum << endl;
+
+    cout << "Array as string: " << (char*)a1 << endl;
 }

@@ -18,4 +18,10 @@ public:
 	void sort();
 	void showMin();
 	void showMax();
+
+	int& operator[](int index);
+	void operator()(int value);
+	operator int();
+	operator char* ();
+
 };
